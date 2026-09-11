@@ -1,6 +1,10 @@
 # pyrefly: ignore [missing-import]
+import os
 import pytest
 import logging
+from dotenv import load_dotenv
+
+load_dotenv()
 # pyrefly: ignore [missing-import]
 from playwright.sync_api import Page, expect
 from pages.login_page import LoginPage
@@ -25,7 +29,7 @@ def test_agencies_workflow(page: Page):
     # 1. Log in to staging
     logging.info("Navigating to login page and filling credentials...")
     login_page.navigate()
-    login_page.login("e2e_test_admin", "LcMPITzmtlmS0cPxJqNm")
+    login_page.login(os.environ.get("CS_USERNAME"), os.environ.get("CS_PASSWORD"))
     logging.info("Login completed.")
 
     # 2. Navigate to agencies page
@@ -79,7 +83,7 @@ def test_agency_form_empty_submission_validation(page: Page):
 
     # 1. Log in to staging
     login_page.navigate()
-    login_page.login("e2e_test_admin", "LcMPITzmtlmS0cPxJqNm")
+    login_page.login(os.environ.get("CS_USERNAME"), os.environ.get("CS_PASSWORD"))
 
     # 2. Navigate to agencies page
     agencies_page.navigate()
