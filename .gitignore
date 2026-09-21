@@ -21,3 +21,7 @@ test-results/
 
 # Env
 .env
+
+# Reports
+*.html
+report.html
