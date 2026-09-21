@@ -2,6 +2,7 @@
 import os
 import pytest
 import logging
+# pyrefly: ignore [missing-import]
 from dotenv import load_dotenv
 
 load_dotenv()
