@@ -1,7 +1,7 @@
 from playwright.sync_api import Page, expect
 
 class AgenciesPage:
-    def __init__(self, page: Page):
+    def __init__(self, page: Page,zip_input):
         self.page = page
         self.add_agency_btn = page.locator("#content > a:nth-child(2) > span")
         
@@ -12,7 +12,7 @@ class AgenciesPage:
         self.address2_input = page.locator("#Address2")
         self.city_input = page.locator("#City")
         self.state_dropdown = page.locator("#StateId")
-        self.zip_input = page.locator("#Zip")
+        zip_input = '123' #page.locator("#Zip")
         self.note_editor = page.locator(".redactor_box:has(#Note) .redactor_editor")
         self.submit_btn = page.locator("#content > div:nth-child(3) > a.btn.btn-success")
         
